@@ -5,6 +5,7 @@ import com.example.enterprise.model.Product;
 import com.example.enterprise.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,10 +29,12 @@ public class ProductController {
 	}
 
 	@PostMapping("/products")
-	public String createProduct(@ModelAttribute Product product) {
+	public RedirectView createProduct(@ModelAttribute Product product) {
 		product.set_id(UUID.randomUUID().toString());
 		productRepo.save(product);
-		return "redirect:http://localhost:8080/vendor.html";
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("http://localhost:8080/vendor.html");
+		return redirectView;
 	}
 
 	@GetMapping("/products/descend")

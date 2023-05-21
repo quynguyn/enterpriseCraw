@@ -1,12 +1,15 @@
 package com.example.enterprise.controller;
 
 import com.example.enterprise.model.Account;
+import com.example.enterprise.model.Product;
 import com.example.enterprise.repo.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping
@@ -32,6 +35,16 @@ public class AccountController {
 		return accountOptional.orElse(null);
 	}
 
+
+	@PostMapping("/accounts")
+	public RedirectView createProduct(@ModelAttribute Account account) {
+		account.set_id(UUID.randomUUID().toString());
+		accountRepo.save(account);
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("http://localhost:8080/index.html");
+		return redirectView;
+	}
+
 	@PostMapping("/accounts/{id}/update")
 	public Account updateAccount(@PathVariable String id, @RequestBody Account updatedAccount) {
 		Optional<Account> accountOptional = accountRepo.findById(id);
@@ -48,4 +61,5 @@ public class AccountController {
 		return null; // Return null or handle the case where the account with the given ID doesn't
 						// exist
 	}
+
 }
