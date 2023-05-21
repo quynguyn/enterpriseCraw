@@ -1,0 +1,149 @@
+.main {
+	margin: 10px 20px;
+}
+
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 10px;
+	width: inherit;
+	justify-content: space-evenly;
+}
+
+.description {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.item-boxes>.hover:hover {
+	background-color: #fff;
+}
+
+/*title*/
+
+.main .title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 10px 0px;
+	padding-bottom: 5px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom: 2px solid var(--primary-color);
+}
+
+.title h1,
+button {
+	text-transform: capitalize;
+}
+
+.sub-title {
+	color: var(--main-color);
+}
+
+/* Add new product */
+
+dialog[data-modal] {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+	padding: 20px;
+	border-radius: 10px;
+	border: var(--primary-color) 2px solid;
+	background-color: #faf7f4;
+}
+
+/* form for data */
+.question-radio input[type="text"],
+.question-radio input[type="password"],
+.question-radio input[type="file"] {
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.modal-form {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+}
+
+label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+textarea {
+	height: 150px;
+	resize: none;
+}
+
+#container .hover:hover {
+	background-color: #fff;
+}
+
+.form-dialog .detail-body {
+	padding-top: 5px;
+}
+
+.form-dialog .detail-body .product-images {
+	flex: 0 0 auto;
+	margin-right: 10px;
+}
+
+.form-dialog .detail-body .product-images .product-image {
+	max-width: 300px;
+	max-height: 400px;
+}
+
+.form-dialog .form-information-detail {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.detail {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.form-body .detail .content {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.detail .content .product-name {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+@media only screen and (max-width: 768px){
+	/* Add your CSS styles here */
+	.title h1{
+		font-size: 1.5rem;
+	}
+  }
+
+@media only screen and (max-width: 560px){
+	/* Add your CSS styles here */
+	.title h1{
+		font-size: 1.5rem;
+	}
+	.box{
+		width: 100%;
+		flex-direction: row;
+	}
+	.price{
+		border-bottom: none;
+		text-decoration: underline;
+	}
+  }
