@@ -13,24 +13,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/gearVn")
 public class GearVnController {
 
     @Autowired
     GearVnRepo gearVnRepo;
 
-    @GetMapping("/gearVN")
-    public List<GearVn> getAll(){
+    @GetMapping
+    public List<GearVn> getAllGearVn(){
         return gearVnRepo.findAll();
     }
 
     @GetMapping("/{component}")
-    public List<GearVn> getProductsByComponent(@PathVariable String component) {
+    public List<GearVn> getGearVnsByComponent(@PathVariable String component) {
         return gearVnRepo.findByComponent(component);
     }
 
 
-    @GetMapping("/gearVns/{id}")
+    @GetMapping("/category/{id}")
     public GearVn getGearVbByID(@PathVariable String id) {
         Optional<GearVn> gearVnOptional= gearVnRepo.findById(id);
         return gearVnOptional.orElse(null);
