@@ -29,6 +29,17 @@ public class GearVnController {
         return gearVnRepo.findByComponent(component);
     }
 
+    @GetMapping("/{component}/ascend")
+    public List<GearVn> getGearVnsByComponentAscend(@PathVariable String component) {
+        return gearVnRepo.findByComponentOrderByPriceAsc(component);
+    }
+//
+//    @GetMapping("/{component/ascend}")
+//    public List<GearVn> getGearVnsByComponentAscend(@PathVariable String component) {
+//        List<GearVn> sort =  gearVnRepo.findByComponent(component);
+//        return gearVnRepo.findALLByOrderByPrice();
+//    }
+
 
     @GetMapping("/category/{id}")
     public GearVn getGearVbByID(@PathVariable String id) {

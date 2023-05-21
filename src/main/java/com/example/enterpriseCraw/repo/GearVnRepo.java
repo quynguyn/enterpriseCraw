@@ -10,4 +10,5 @@ import java.util.List;
 public interface GearVnRepo extends JpaRepository<GearVn,String> {
 
     List<GearVn> findByComponent(String component);
+    List<GearVn> findByComponentOrderByPriceAsc(String component);
 }
