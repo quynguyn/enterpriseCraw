@@ -1,6 +1,6 @@
 .main-container {
 	display: flex;
-	margin: 0 auto;
+	margin: 10px auto;
 	flex-direction: column;
 	width: 60%;
 }
@@ -11,12 +11,17 @@
 }
 
 .main-container .detail .product-images {
-	width: 100px;
-	height: 100px;
+	width: fit-content;
+	height: fit-content;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 .main-container .detail .product-images img {
+	display: block;
 	min-width: 100px;
+	max-width: 200px;
+
 }
 
 .main-container .detail .form-information-detail .content {
@@ -36,9 +41,4 @@
 	text-align: end;
 	margin-right: 10px;
 	border-bottom: #147149 1px solid;
-}
-
-.main-container .description b {
-	font-size: 25px;
-	margin-bottom: 100px;
 }
