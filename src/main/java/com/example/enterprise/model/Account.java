@@ -67,12 +67,12 @@ public class Account {
         this.password = password;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getProfilepicture() {
+        return profilepicture;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilepicture(String profilePicture) {
+        this.profilepicture = profilePicture;
     }
 
     public String getType() {
@@ -92,7 +92,7 @@ public class Account {
     }
 
     private String password;
-    private String profilePicture;
+    private String profilepicture;
     private String type;
     private String username;
 

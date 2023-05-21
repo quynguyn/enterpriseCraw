@@ -33,7 +33,8 @@ public class AccountController {
 
             existingAccount.setUsername(updatedAccount.getUsername());
             existingAccount.setPassword(updatedAccount.getPassword());
-            existingAccount.setProfilePicture(updatedAccount.getProfilePicture());
+            existingAccount.setProfilepicture(updatedAccount.getProfilepicture());
+
             // Save the updated account in the repository
             return accountRepo.save(existingAccount);
         }
