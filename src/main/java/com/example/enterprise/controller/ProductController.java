@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping
@@ -26,24 +27,11 @@ public class ProductController {
 		return productRepo.findByVendor(businessName);
 	}
 
-	@PostMapping("/product")
-	public Product updateAccount(@PathVariable String id, @RequestBody Product updatedProduct) {
-		Optional<Product> productOptional = productRepo.findById(id);
-		if (productOptional.isPresent()) {
-			Product existingProduct = productOptional.get();
-			System.out.println(existingProduct);
-			existingProduct.setName(updatedProduct.getName());
-			existingProduct.setPrice(updatedProduct.getPrice());
-			existingProduct.setImage(updatedProduct.getImage());
-			existingProduct.setDescription(updatedProduct.getDescription());
-
-			// Save the updated account in the repository
-
-			System.out.println(existingProduct);
-			return productRepo.save(existingProduct);
-		}
-		return null; // Return null or handle the case where the account with the given ID doesn't
-						// exist
+	@PostMapping("/products")
+	public String createProduct(@ModelAttribute Product product) {
+		product.set_id(UUID.randomUUID().toString());
+		productRepo.save(product);
+		return "redirect:http://localhost:8080/vendor.html";
 	}
 
 	@GetMapping("/products/descend")

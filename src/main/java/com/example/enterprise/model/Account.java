@@ -9,7 +9,6 @@ import lombok.Data;
 public class Account {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String _id;
 
 	private String address;

@@ -95,7 +95,7 @@
 				<div class="form-title">Add New Product</div>
 				<button data-close-modal class="close-button">×</button>
 			</div>
-			<form class="form-body inputData" action="http://localhost:8080/products" method="post">
+			<form class="form-body inputData" action="http://localhost:8080/products" method="post" content-Type="application/json">
 				<div>
 					<label for="name">Name:</label>
 					<input type="text" id="name" name="name" minlength="10" maxlength="20" required />
@@ -107,8 +107,8 @@
 				</div>
 
 				<div>
-					<label for="image">Image:</label>
-					<input type="file" id="image" name="image" accept="image/*" />
+					<label for="image">Picture of product:</label>
+					<input type="text" id="image" name="image" />
 				</div>
 
 				<div>
@@ -117,8 +117,8 @@
 				</div>
 
 				<div>
-					<label class="hide" for="vendor">Description:</label>
-					<input type="text" class="hide" id="vendor" name="vendor"></input>
+					<label class="hide" for="vendor"></label>
+					<input type="text" class="hide" id="vendor" name="vendor">
 				</div>
 
 				<div class="submit-button">

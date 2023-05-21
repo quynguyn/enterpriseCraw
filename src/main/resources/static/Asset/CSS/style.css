@@ -315,6 +315,7 @@ dialog::backdrop {
 	transform: translateY(-0.1rem);
 	transition: transform 150ms;
 	background-color: var(--primary-color) !important;
+	color:#ffffff;
 }
 
 /* display iteam in the vendor and custumer */

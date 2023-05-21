@@ -5,7 +5,8 @@ const itemBoxContainer = document.querySelector("[item-box-container]");
 
 const detailContainer = document.querySelector(".detail-body");
 const detailModal = document.querySelector("[detail-dialog]");
-
+document.getElementById("vendor").value = businessName;
+console.log(document.getElementById("vendor").value );
 const noProduct = document.querySelector("#no-product");
 // Show the loader
 function showLoader() {
