@@ -10,61 +10,61 @@ import lombok.Data;
 @Table(name = "products")
 public class Product {
 
-    @Id
-    private String _id;
+	@Id
+	private String _id;
 
-    public String get_id() {
-        return _id;
-    }
+	private String description;
+	private String name;
+	private String image;
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
+	private int price;
+	private String vendor;
 
-    public String getDescription() {
-        return description;
-    }
+	public String get_id() {
+		return _id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void set_id(String _id) {
+		this._id = _id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getImage() {
-        return image;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public int getPrice() {
-        return price;
-    }
+	public String getImage() {
+		return image;
+	}
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+	public void setImage(String image) {
+		this.image = image;
+	}
 
-    public String getVendor() {
-        return vendor;
-    }
+	public int getPrice() {
+		return price;
+	}
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
-    private String description;
-    private String name;
-    private String image;
+	public String getVendor() {
+		return vendor;
+	}
 
-    private int price;
-    private String vendor;
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
 }

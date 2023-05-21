@@ -15,6 +15,9 @@ public class Order {
     private String activity;
     private String orderAddress;
 
+    private String ordererName;
+    private String productList;
+
     public String get_id() {
         return _id;
     }
@@ -54,7 +57,4 @@ public class Order {
     public void setProductList(String productList) {
         this.productList = productList;
     }
-
-    private String ordererName;
-    private String productList;
 }

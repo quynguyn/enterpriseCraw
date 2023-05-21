@@ -90,23 +90,20 @@ function logIn(event) {
 	const username = form.email.value;
 	const password = form.password.value;
 
-	fetch("http://localhost:8080/accounts")
+	fetch("http://localhost:8080/accounts/" + username + "/" + password)
 		.then((response) => response.json())
 		.then((data) => {
-			const accountCheck = data.find(
-				(account) =>
-					account.username === username && account.password === password
-			);
+			console.log(data.type);
 
-			if (accountCheck === undefined) {
+			if (data === undefined) {
 				displayErrorMessage();
 			} else {
-				localStorage.setItem("currentUser", JSON.stringify(accountCheck));
+				localStorage.setItem("currentUser", JSON.stringify(data));
 
 				form.email.value = '';
 				form.password.value = '';
 
-				window.location.href = accountCheck.type + ".html";
+				window.location.href = data.type + ".html";
 			}
 		})
 		.catch((error) => console.error(error));

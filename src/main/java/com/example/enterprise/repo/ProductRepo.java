@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepo extends JpaRepository<Product,String> {
+public interface ProductRepo extends JpaRepository<Product, String> {
 
-    List<Product> findByVendor(String businessName);
+	List<Product> findByVendor(String businessName);
+
+	List<Product> findAllByOrderByPriceDesc();
+
+	List<Product> findAllByOrderByPriceAsc();
 }
