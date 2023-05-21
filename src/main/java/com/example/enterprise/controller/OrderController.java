@@ -17,24 +17,24 @@ public class OrderController {
 
 	@Autowired
 	OrderRepo orderRepo;
-
-	@PostMapping("/product")
-	public Order updateAccount(@PathVariable String id, @RequestBody Order updatedProduct) {
-		Optional<Order> orderOptional = orderRepo.findById(id);
-		if (orderOptional.isPresent()) {
-			Order existingProduct = orderOptional.get();
-			System.out.println(existingProduct);
-			// existingProduct.setName(updatedProduct.getName());
-			// existingProduct.setPrice(updatedProduct.getPrice());
-			// existingProduct.setImage(updatedProduct.getImage());
-			// existingProduct.setDescription(updatedProduct.getDescription());
-
-			// Save the updated account in the repository
-
-			System.out.println(existingProduct);
-			return orderRepo.save(existingProduct);
-		}
-		return null; // Return null or handle the case where the account with the given ID doesn't
-						// exist
-	}
+//
+//	@PostMapping("/product")
+//	public Order updateAccount(@PathVariable String id, @RequestBody Order updatedProduct) {
+//		Optional<Order> orderOptional = orderRepo.findById(id);
+//		if (orderOptional.isPresent()) {
+//			Order existingProduct = orderOptional.get();
+//			System.out.println(existingProduct);
+//			// existingProduct.setName(updatedProduct.getName());
+//			// existingProduct.setPrice(updatedProduct.getPrice());
+//			// existingProduct.setImage(updatedProduct.getImage());
+//			// existingProduct.setDescription(updatedProduct.getDescription());
+//
+//			// Save the updated account in the repository
+//
+//			System.out.println(existingProduct);
+//			return orderRepo.save(existingProduct);
+//		}
+//		return null; // Return null or handle the case where the account with the given ID doesn't
+//						// exist
+//	}
 }
