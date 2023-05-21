@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping()
@@ -28,9 +29,10 @@ public class GearVnController {
         return gearVnRepo.findByComponent(component);
     }
 
-//
-//    @GetMapping("/{component}")
-//    public List<GearVn> getProductsByComponent(@PathVariable String component) {
-//        return gearVnRepo.findByComponent(component);
-//    }
+
+    @GetMapping("/{id}")
+    public GearVn getGearVbByID(@PathVariable String id) {
+        Optional<GearVn> gearVnOptional= gearVnRepo.findById(id);
+        return gearVnOptional.orElse(null);
+    }
 }
