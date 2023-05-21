@@ -34,7 +34,6 @@ const businessName = document.querySelector('#businessName')
 const businessAddress = document.querySelector('#businessAddress')
 const address = document.querySelector('#address')
 const uName = document.querySelector('#name')
-const distributionHub = document.querySelector('#distributionHub')
 
 const form = document.getElementById("account-information")
 
@@ -52,10 +51,6 @@ function fillData() {
 	} else if (userType == 'customer') {
 		address.value = currentUser.address
 		uName.value = currentUser.name
-	} else {
-		const hubName = currentUser.distributionHub
-		const activity = distributionHub.querySelector("option[value='" + hubName + "']")
-		activity.selected = 'selected'
 	}
 }
 

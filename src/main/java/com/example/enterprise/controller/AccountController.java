@@ -3,10 +3,7 @@ package com.example.enterprise.controller;
 import com.example.enterprise.model.Account;
 import com.example.enterprise.repo.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,5 +24,19 @@ public class AccountController {
     public Account getGearVbByID(@PathVariable String id) {
         Optional<Account> accountOptional= accountRepo.findById(id);
         return accountOptional.orElse(null);
+    }
+    @PostMapping("/accounts/{id}/update")
+    public Account updateAccount(@PathVariable String id, @RequestBody Account updatedAccount) {
+        Optional<Account> accountOptional = accountRepo.findById(id);
+        if (accountOptional.isPresent()) {
+            Account existingAccount = accountOptional.get();
+
+            existingAccount.setUsername(updatedAccount.getUsername());
+            existingAccount.setPassword(updatedAccount.getPassword());
+            existingAccount.setProfilePicture(updatedAccount.getProfilePicture());
+            // Save the updated account in the repository
+            return accountRepo.save(existingAccount);
+        }
+        return null; // Return null or handle the case where the account with the given ID doesn't exist
     }
 }

@@ -1,4 +1,4 @@
-const businessName = JSON.parse(localStorage.getItem("currentUser")).businessName;
+const businessName = JSON.parse(localStorage.getItem("currentUser")).businessname;
 
 const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");

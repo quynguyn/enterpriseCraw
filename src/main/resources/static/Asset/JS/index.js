@@ -1,11 +1,9 @@
 // Variable
 const vendorRadio = document.querySelector('input[value="vendor"]');
 const customerRadio = document.querySelector('input[value="customer"]');
-const shipperRadio = document.querySelector('input[value="shipper"]');
 
 const vendorDiv = document.querySelector("#vendor-div");
 const customerDiv = document.querySelector("#customer-div");
-const shipperDiv = document.querySelector("#shipper-div");
 
 // to open and close the modal
 const openModalButtons = document.querySelector("#open-register");
@@ -29,7 +27,6 @@ function showDiv() {
 
 	vendorDiv.classList.toggle("hide", !vendorRadio.checked);
 	customerDiv.classList.toggle("hide", !customerRadio.checked);
-	shipperDiv.classList.toggle("hide", !shipperRadio.checked);
 
 	if (vendorRadio.checked) {
 		accountUserType = "vendor";
@@ -45,11 +42,7 @@ function showDiv() {
 		document.getElementById("name").value = '';
 	}
 
-	if (shipperRadio.checked) {
-		accountUserType = "shipper";
-	} else {
-		document.getElementById("distributionHub").value = '';
-	}
+
 
 	document.querySelector('#type').value = accountUserType
 
@@ -58,17 +51,14 @@ function showDiv() {
 
 vendorRadio.addEventListener("change", showDiv);
 customerRadio.addEventListener("change", showDiv);
-shipperRadio.addEventListener("change", showDiv);
 
 // clear all the check
 function uncheck() {
 	vendorRadio.checked = false;
 	customerRadio.checked = false;
-	shipperRadio.checked = false;
 
 	vendorDiv.style.display = "none";
 	customerDiv.style.display = "none";
-	shipperDiv.style.display = "none";
 }
 
 // password toggle
@@ -268,9 +258,5 @@ function addNewAccount(accountType) {
 		const name = document.getElementById("name").value != '';
 
 		return username && password && profilePicture && address && name;
-	} else if (accountType == "shipper") {
-		const distributionHub = document.getElementById("distribution-hub").value != '';
-
-		return username && password && profilePicture && distributionHub;
 	}
 }
