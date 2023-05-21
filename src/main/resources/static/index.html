@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+	
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Asset\CSS\style.css" />
+    <link rel="stylesheet" href="Asset\CSS\index.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script defer src="Asset/JS/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="nav-part">
+            <a class="logo" href="index.html">
+                <picture>
+                    <source srcset="Asset/IMG/nav-icon.png" media="(max-width: 960px)">
+                    <source srcset="Asset/IMG/nav-icon.png">
+                    <img src="Asset/IMG/nav-icon.png" alt="logo">
+                </picture>
+            </a>
+
+            <a href="index.html"><b>PickAPart</b></a>
+        </div>
+
+        <form class="nav-part search-bar">
+            <input type="text" placeholder="Search PC part">
+            <img id="magnifying-glass" src="Asset/IMG/magnifying-glass.png" alt="magnifying glass">
+        </form>
+
+        <div class="nav-part">
+            <a href="index.html">
+                <b>Home</b>
+
+                <div class="icon-container">
+                    <img src="Asset/IMG/home.png" alt="">
+                </div>
+            </a>
+            <a href="aboutUs.html">
+                <b>About Us</b>
+
+                <div class="icon-container">
+                    <img src="Asset/IMG/aboutUs.png" alt="">
+                </div>
+            </a>
+            <a href="contact.html">
+                <b>Contact</b>
+
+                <div class="icon-container">
+                        <img src="Asset/IMG/contact.png" alt="">
+                </div>
+            </a>
+            <a href="shoppingCart.html">
+                <img id="shopping-cart" src="Asset/IMG/shoppingCart.png" alt="shopping cart">
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/CPU.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">CPU</p>
+                        <button class="btn" onclick="goToCategory('CPU')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/GPU.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">Graphic Card</p>
+                        <button class="btn" onclick="goToCategory('VGA')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/mainboard.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">Motherboard</p>
+                        <button class="btn" onclick="goToCategory('Mainboard')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/ram.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">RAM</p>
+                        <button class="btn" onclick="goToCategory('RAM')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/storage.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">Storage</p>
+                        <button class="btn" onclick="goToCategory('SSD')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/PSU.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">Power Supply</p>
+                        <button class="btn" onclick="goToCategory('PSU')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/case.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">Case</p>
+                        <button class="btn" onclick="goToCategory('Case')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="product-sub-container product-image">
+                    <div class="content">
+                        <img class="product-img" src="Asset/IMG/Parts/gold/fan.png" alt="test">
+                    </div>
+                </div>
+                <div class="product-sub-container product-information">
+                    <div class="content">
+                        <p class="title">CPU Cooler</p>
+                        <button class="btn" onclick="goToCategory('Cooler')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="nav-part">
+            <a class="logo" href="index.html">
+                <picture>
+                    <source srcset="Asset/IMG/nav-icon.png" media="(max-width: 960px)">
+                    <source srcset="Asset/IMG/nav-icon.png">
+                    <img src="Asset/IMG/nav-icon.png" alt="logo">
+                </picture>
+            </a>
+
+            <a href="index.html"><b>PickAPart</b></a>
+        </div>
+
+        <div id="about-div" class="nav-part">
+            <b><u>About Us</u></b>
+            Group project
+        </div>
+
+        <div id="contact-div" class="nav-part">
+            <b>Contact</b>
+            <p>Phone: 0123456789</p>
+            <p>Address: 702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+            <p>Email: something@gmail.com</p>
+        </div>
+
+        <div class="social-media-div">
+            <img class="social-media" src="Asset/IMG/facebook.png" alt="facebook">
+            <img class="social-media" src="Asset/IMG/instagram.png" alt="instagram">
+            <img class="social-media" src="Asset/IMG/youtube.png" alt="youtube">
+            <img class="social-media" src="Asset/IMG/twitter.png" alt="twitter">
+        </div>
+    </footer>
+</body>

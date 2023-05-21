@@ -1,0 +1,44 @@
+.main-container {
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+	width: 60%;
+}
+
+.main-container .detail {
+	display: flex;
+	justify-content: space-around;
+}
+
+.main-container .detail .product-images {
+	width: 100px;
+	height: 100px;
+}
+
+.main-container .detail .product-images img {
+	min-width: 100px;
+}
+
+.main-container .detail .form-information-detail .content {
+	margin-bottom: 10px;
+}
+
+.main-container .detail .form-information-detail .content p {
+	font-size: 25px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.main-container .detail .form-information-detail .content span {
+	color: #147919;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: end;
+	margin-right: 10px;
+	border-bottom: #147149 1px solid;
+}
+
+.main-container .description b {
+	font-size: 25px;
+	margin-bottom: 100px;
+}
