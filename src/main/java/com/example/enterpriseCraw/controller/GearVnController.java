@@ -30,7 +30,7 @@ public class GearVnController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/gearVns/{id}")
     public GearVn getGearVbByID(@PathVariable String id) {
         Optional<GearVn> gearVnOptional= gearVnRepo.findById(id);
         return gearVnOptional.orElse(null);
