@@ -2,211 +2,230 @@
 <html lang="en">
 
 <head>
-    <title>Home</title>
-	
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="Asset\CSS\style.css" />
-    <link rel="stylesheet" href="Asset\CSS\index.css" />
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Web</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Asset/CSS/style.css" />
+	<link rel="stylesheet" href="Asset/CSS/index.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 	<script defer src="Asset/JS/index.js"></script>
+	<script defer src="Asset/JS/style.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="nav-part">
-            <a class="logo" href="index.html">
-                <picture>
-                    <source srcset="Asset/IMG/nav-icon.png" media="(max-width: 960px)">
-                    <source srcset="Asset/IMG/nav-icon.png">
-                    <img src="Asset/IMG/nav-icon.png" alt="logo">
-                </picture>
-            </a>
+	<!-- Header of the page -->
+	<header>
+		<div class="logo">
+			<a href="index.html">
+				<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			</a>
+			<h1>Enterprise</h1>
+		</div>
 
-            <a href="index.html"><b>PickAPart</b></a>
-        </div>
+		<div class="theme-switch-wrapper">
+			<label class="theme-switch" for="checkbox">
+				<input type="checkbox" id="checkbox" />
+				<div class="slider round"></div>
+			</label>
+		</div>
+	</header>
+	<!-- Form to make an account -->
+	<div class="container">
+		<!-- log in section -->
+		<div class="form">
+			<h2>Login</h2>
+			<form>
+				<label for="email">Email</label>
+				<input type="text" name="email" placeholder="Enter Email" required />
+				<label for="password">Password:</label>
+				<div class="password-row">
+					<input required style="width: 90%;" type="password" id="password" name="password"
+						placeholder="Enter Password" />
+					<button type="button" class="btn hover toggle-password" onclick="togglePasswordVisibility(1)">
+						&#8892
+					</button>
+				</div>
+				<button class="hover" type="submit">Login</button>
+			</form>
+			<p>Don't have an account? <button onclick="openModal()" id="open-register" class="hover"
+					href="#">Register</button></p>
+		</div>
+		<!-- Form to register for an account -->
+		<dialog class="form-modal" id="modal">
+			<div class="form-header">
+				<div class="form-title">Register for an Account</div>
+				<button data-close-button class="close-button" onclick="closeModal()">×</button>
+			</div>
 
-        <form class="nav-part search-bar">
-            <input type="text" placeholder="Search PC part">
-            <img id="magnifying-glass" src="Asset/IMG/magnifying-glass.png" alt="magnifying glass">
-        </form>
+			<!-- body modal -->
+			<div class="form-body scrollable">
+				<!-- modal to be pop up -->
+				<div class="question-radio">
+					<!-- selection -->
+					<div>
+						<labe class="accountType" for="questionType">Type of account:</labe>
+						<div class="radio-group">
+							<label for="vendor"><input required type="radio" name="role" id="vendor" value="vendor" />
+								Vendor</label>
+							<label for="customer"><input required type="radio" name="role" id="customer"
+									value="customer" />
+								Customer</label>
+							<label for="shipper"><input required type="radio" name="role" id="shipper"
+									value="shipper" />
+								Shipper</label>
+						</div>
+					</div>
+					<form action="http://localhost:3000/accounts" method="POST" class="inputData"
+						enctype="multipart/form-data" id="register-form">
+						<!-- Common input -->
+						<div class="commonInformation">
+							<div>
+								<label for="username">Username:</label>
+								<input required type="text" id="username" name="username"
+									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
 
-        <div class="nav-part">
-            <a href="index.html">
-                <b>Home</b>
+								<div id="username-message">
+									<h3>Username must contain the following:</h3>
+									<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
+									<p id="u-number" class="invalid">A <b>number</b></p>
+									<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
+								</div>
+							</div>
 
-                <div class="icon-container">
-                    <img src="Asset/IMG/home.png" alt="">
-                </div>
-            </a>
-            <a href="aboutUs.html">
-                <b>About Us</b>
+							<div>
+								<label for="password">Password:</label>
+								<div class="password-row">
+									<input required type="password" id="passwordNew" name="password"
+										pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+									<button type="button" class="btn hover toggle-passwordNew"
+										onclick="togglePasswordVisibility(2)">
+										&#8892
+									</button>
+								</div>
+								<div id="password-message">
+									<h3>Password must contain the following:</h3>
+									<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
+									<p id="p-capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+									<p id="p-number" class="invalid">A <b>number</b></p>
+									<p id="p-special" class="invalid">A <b>special character</b> (!@#$%^&)</p>
+									<p id="p-length" class="invalid">In range: <b>[8-20] characters</b></p>
+								</div>
+							</div>
+							<div>
+								<label for="profilePicture">Profile Picture:</label>
+								<input required type="file" id="image" name="image" accept="image/*" />
+							</div>
+						</div>
+						<!-- Vendor account -->
+						<div id="vendor-div" class="vendor hide">
+							<div>
+								<label for="businessName">Business Name:</label>
+								<input type="text" id="businessName" name="businessName" pattern=".{5,}" />
+							</div>
+							<div>
+								<label for="businessAddress">Business Address:</label>
+								<input type="text" id="businessAddress" name="businessAddress" pattern=".{5,}" />
+							</div>
+						</div>
+						<!-- Customer account -->
+						<div id="customer-div" class="customer hide">
+							<div>
+								<label for="address">Address:</label>
+								<input type="text" id="address" name="address" pattern=".{5,}" />
+							</div>
+							<div>
+								<label for="name">Name:</label>
+								<input type="text" id="name" name="name" pattern=".{5,}" />
+							</div>
+						</div>
+						<!-- Shipper account -->
+						<div id="shipper-div" class="shipper hide">
+							<label for="distributionHub">Distribution Hub:</label>
+							<select id="distributionHub" name="distributionHub" required>
+								<option value="none"></option>
+								<option value="Chicago Distribution Hub">Chicago Distribution Hub</option>
+								<option value="Los Angeles Distribution Hub">Los Angeles Distribution Hub</option>
+								<option value="New York Distribution Hub">New York Distribution Hub</option>
+							</select>
+						</div>
 
-                <div class="icon-container">
-                    <img src="Asset/IMG/aboutUs.png" alt="">
-                </div>
-            </a>
-            <a href="contact.html">
-                <b>Contact</b>
+						<div id="user-type" class="hide">
+							<label for="type">Name:</label>
+							<input type="text" id="type" name="type" />
+						</div>
+						<!-- Submit account -->
+						<div class="submit-button">
+							<button class="hover" id="submit-btn" onclick="submitRegisterForm()">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</dialog>
+	</div>
+	<!-- Footer of the page -->
 
-                <div class="icon-container">
-                        <img src="Asset/IMG/contact.png" alt="">
-                </div>
-            </a>
-            <a href="shoppingCart.html">
-                <img id="shopping-cart" src="Asset/IMG/shoppingCart.png" alt="shopping cart">
-            </a>
-        </div>
-    </header>
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="row">
+				<div class="footer-col">
+					<h4>About</h4>
+					<ul>
+						<li>Our name is 'Web Group'. We are a group in the RMIT web programming course. Our goal is to
+							provide you with an exceptional e-commerce experience. We have five members and we've
+							curated a wide selection of high-quality products, a secure platform, and customer service.
+						</li>
+					</ul>
+					<h4>Copyright</h4>
+					<ul>
+						<li>All rights reserved. © Web Group 2023.</li>
+					</ul>
+				</div>
 
-    <div class="main-container">
-        <div class="grid-container">
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/CPU.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">CPU</p>
-                        <button class="btn" onclick="goToCategory('CPU')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/GPU.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">Graphic Card</p>
-                        <button class="btn" onclick="goToCategory('VGA')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/mainboard.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">Motherboard</p>
-                        <button class="btn" onclick="goToCategory('Mainboard')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/ram.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">RAM</p>
-                        <button class="btn" onclick="goToCategory('RAM')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/storage.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">Storage</p>
-                        <button class="btn" onclick="goToCategory('SSD')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/PSU.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">Power Supply</p>
-                        <button class="btn" onclick="goToCategory('PSU')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/case.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">Case</p>
-                        <button class="btn" onclick="goToCategory('Case')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="product-sub-container product-image">
-                    <div class="content">
-                        <img class="product-img" src="Asset/IMG/Parts/gold/fan.png" alt="test">
-                    </div>
-                </div>
-                <div class="product-sub-container product-information">
-                    <div class="content">
-                        <p class="title">CPU Cooler</p>
-                        <button class="btn" onclick="goToCategory('Cooler')">Learn More</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <footer>
-        <div class="nav-part">
-            <a class="logo" href="index.html">
-                <picture>
-                    <source srcset="Asset/IMG/nav-icon.png" media="(max-width: 960px)">
-                    <source srcset="Asset/IMG/nav-icon.png">
-                    <img src="Asset/IMG/nav-icon.png" alt="logo">
-                </picture>
-            </a>
-
-            <a href="index.html"><b>PickAPart</b></a>
-        </div>
-
-        <div id="about-div" class="nav-part">
-            <b><u>About Us</u></b>
-            Group project
-        </div>
-
-        <div id="contact-div" class="nav-part">
-            <b>Contact</b>
-            <p>Phone: 0123456789</p>
-            <p>Address: 702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
-            <p>Email: something@gmail.com</p>
-        </div>
-
-        <div class="social-media-div">
-            <img class="social-media" src="Asset/IMG/facebook.png" alt="facebook">
-            <img class="social-media" src="Asset/IMG/instagram.png" alt="instagram">
-            <img class="social-media" src="Asset/IMG/youtube.png" alt="youtube">
-            <img class="social-media" src="Asset/IMG/twitter.png" alt="twitter">
-        </div>
-    </footer>
+				<div class="footer-col">
+					<h4>Privacy</h4>
+					<ul>
+						<li>We prioritize the privacy of our users. Please refer to our Privacy Policy for detailed
+							information on how we handle and protect your data.</li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Help</h4>
+					<div class="help">
+						<img src=""
+							alt="RMIT Logo" class="rmit-logo">
+						<ul>
+							<li>Phone: +61 3 9925 2000
+							</li>
+						</ul>
+						<div class="address">
+							<ul>
+								<li>Address: 702 Nguyen Van Linh District 7, Ho Chi Minh City
+								</li>
+							</ul>
+						</div>
+						<div class="map">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0784075554648!2d106.69194667620562!3d10.728435889417451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fbeb6e2e0d7%3A0xdf39050d96a105b4!2zNzAyIMSQLiBOZ3V54buFbiBWxINuIExpbmgsIFTDom4gSMawbmcsIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmggNzAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1683917286290!5m2!1svi!2s"
+								width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div class="social">
+							<a href="https://www.facebook.com/RMITUniversityVietnam/" target="_blank"><i
+									class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/RMIT" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.instagram.com/rmituniversity/" target="_blank"><i
+									class="fab fa-instagram"></i></a>
+							<a href="https://au.linkedin.com/school/rmit-university/" target="_blank"><i
+									class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
+
+</html>

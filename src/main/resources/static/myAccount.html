@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>My Account</title>
+	<link rel="stylesheet" href="Asset/CSS/style.css" />
+	<link rel="stylesheet" href="Asset/CSS/myAccount.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+	<script defer src="Asset/JS/myAccount.js"></script>
+	<script defer src="Asset/JS/style.js"></script>
+</head>
+
+<body>
+	<!-- Header of the page -->
+	<header>
+		<div class="logo">
+			<a href="index.html">
+				<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			</a>
+			<h1>Enterprise</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a id='home-link'>HOME</a></li>
+			</ul>
+			<div class="theme-switch-wrapper">
+				<label class="theme-switch" for="checkbox">
+					<input type="checkbox" id="checkbox" />
+					<div class="slider round"></div>
+				</label>
+			</div>
+		</nav>
+	</header>
+	<!-- Main body in the page -->
+	<div class="main" id="main">
+		<form id="account-information" method="post" class="inputData">
+			<!-- Common input -->
+			<div class="avatar">
+				<img src="" alt="avatar" />
+			</div>
+			<div class="commonInformation">
+				<div>
+					<label for="profilePicture">Profile Picture:</label>
+					<input type="file" id="profilePicture" name="profilePicture" />
+				</div>
+				<div>
+					<label for="username">Username:</label>
+					<!-- <input type="text" id="username" name="username" /> -->
+					<input required type="text" id="username" name="username"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
+
+					<div id="username-message">
+						<h3>Username must contain the following:</h3>
+						<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
+						<p id="u-number" class="invalid">A <b>number</b></p>
+						<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
+					</div>
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<div class="password-row">
+						<input required type="password" id="password" name="password"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+						<button type="button" class="hover toggle-password"
+							onclick="togglePasswordVisibility()">⊼</button>
+					</div>
+
+					<div id="password-message">
+						<h3>Password must contain the following:</h3>
+						<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
+						<p id="p-capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+						<p id="p-number" class="invalid">A <b>number</b></p>
+						<p id="p-special" class="invalid">A <b>special character</b> (!@#$%^&)</p>
+						<p id="p-length" class="invalid">In range: <b>[8-20] characters</b></p>
+					</div>
+				</div>
+				<!-- Vendor account -->
+				<div id="vendor-div" class="vendor" user-type>
+					<div>
+						<label for="businessName">Business Name:</label>
+						<input type="text" id="businessName" name="businessName" />
+					</div>
+					<div>
+						<label for="business-address">Business Address:</label>
+						<input type="text" id="businessAddress" name="businessAddress" />
+					</div>
+				</div>
+				<!-- Customer account -->
+				<div id="customer-div" class="customer" user-type>
+					<div>
+						<label for="address">Address:</label>
+						<input type="text" id="address" name="address" />
+					</div>
+					<div>
+						<label for="name">Name:</label>
+						<input type="text" id="name" name="name" />
+					</div>
+				</div>
+				<!-- Shipper account -->
+				<div id="shipper-div" class="shipper" user-type>
+					<label for="distributionHub">Distribution Hub:</label>
+					<select id="distributionHub" name="distributionHub">
+						<option value="Chicago Distribution Hub">Chicago Distribution Hub</option>
+						<option value="Los Angeles Distribution Hub">Los Angeles Distribution Hub</option>
+						<option value="New York Distribution Hub">New York Distribution Hub</option>
+					</select>
+				</div>
+				<!-- Submit account -->
+				<div class="submit-button">
+					<button class="hover" type="submit">Submit</button>
+					<button type="button" class="btn hover" onclick="logOut()">Log Out</button>
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+
+	<dialog class="hide-dialog">
+		<div class="detail-header">
+			<div class="detail-title">Product Detail</div>
+			<button closeData class="close-button">×</button>
+		</div>
+		<!-- product detail -->
+		<div class="hide-div">
+			<p>You are not in the right page</p>
+		</div>
+	</dialog>
+
+	<!-- Footer of the page -->
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="row">
+				<div class="footer-col">
+					<h4>About</h4>
+					<ul>
+						<li>
+							Our name is 'Web Group'. We are a group in the RMIT web
+							programming course. Our goal is to provide you with an
+							exceptional e-commerce experience. We have five members and
+							we've curated a wide selection of high-quality products, a
+							secure platform, and customer service.
+						</li>
+					</ul>
+					<h4>Copyright</h4>
+					<ul>
+						<li>All rights reserved. © Web Group 2023.</li>
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<h4>Privacy</h4>
+					<ul>
+						<li>
+							We prioritize the privacy of our users. Please refer to our
+							Privacy Policy for detailed information on how we handle and
+							protect your data.
+						</li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Help</h4>
+					<div class="help">
+						<img src=""
+							alt="RMIT Logo" class="rmit-logo" />
+						<ul>
+							<li>Phone: +61 3 9925 2000
+							</li>
+						</ul>
+						<div class="address">
+							<ul>
+								<li>
+									Address: 702 Nguyen Van Linh District 7, Ho Chi Minh City
+								</li>
+							</ul>
+						</div>
+						<div class="map">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0784075554648!2d106.69194667620562!3d10.728435889417451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fbeb6e2e0d7%3A0xdf39050d96a105b4!2zNzAyIMSQLiBOZ3V54buFbiBWxINuIExpbmgsIFTDom4gSMawbmcsIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmggNzAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1683917286290!5m2!1svi!2s"
+								width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div class="social">
+							<a href="https://www.facebook.com/RMITUniversityVietnam/" target="_blank"><i
+									class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/RMIT" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.instagram.com/rmituniversity/" target="_blank"><i
+									class="fab fa-instagram"></i></a>
+							<a href="https://au.linkedin.com/school/rmit-university/" target="_blank"><i
+									class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
