@@ -5,20 +5,26 @@ import com.example.enterpriseCraw.repo.GearVnRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping()
 public class GearVnController {
 
     @Autowired
     GearVnRepo gearVnRepo;
 
-    @GetMapping
+    @GetMapping("/gearVN")
     public List<GearVn> getAll(){
         return gearVnRepo.findAll();
+    }
+
+    @GetMapping("/{component}")
+    public List<GearVn> getProductsByComponent(@PathVariable String component) {
+        return gearVnRepo.findByComponent(component);
     }
 }

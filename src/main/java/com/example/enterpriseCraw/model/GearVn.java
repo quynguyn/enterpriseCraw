@@ -14,11 +14,12 @@ public class GearVn {
     @Id
     private String _id;
 
-    private String fullName;
-    private String shortName;
+    private String fullname;
+    private String shortname;
 
     @Column(name = "component")
-    private String Component;
-    private String Img;
-    private int Price;
+    private String component;
+
+    private String img;
+    private int price;
 }
