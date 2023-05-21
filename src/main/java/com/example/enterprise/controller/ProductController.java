@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @PostMapping("/product")
-    public Product updateAccount(@PathVariable String id, @RequestBody Product updatedProduct) {
+    public String updateAccount(@PathVariable String id, @RequestBody Product updatedProduct) {
         Optional<Product> productOptional = productRepo.findById(id);
         if (productOptional.isPresent()) {
             Product existingProduct = productOptional.get();
@@ -40,7 +40,8 @@ public class ProductController {
             // Save the updated account in the repository
 
             System.out.println(existingProduct);
-            return productRepo.save(existingProduct);
+            productRepo.save(existingProduct);
+            return "redirect:http://localhost:8080/myAccount.html";
         }
         return null; // Return null or handle the case where the account with the given ID doesn't exist
     }
