@@ -3,16 +3,12 @@ const itemTemplate = document.querySelector("#item-box-template")
 
 const productType = localStorage.getItem('category')
 
-console.log(productType)
-
-fetch('http://localhost:8080/' + productType)
+fetch('http://localhost:8080/gearVn/' + productType + '/ascend')
 	.then(res => res.json())
 	.then(data => {
 		data.map(product => {
-
 			const box = itemTemplate.content.cloneNode(true).children[0]
 			box.id = product._id
-			console.log(box)
 			// box.onclick = () => openItem(box.id)
 
 			const name = box.querySelector("#title")
@@ -27,7 +23,13 @@ fetch('http://localhost:8080/' + productType)
 
 			productContainer.appendChild(box)
 		})
+		// console.log(data)
 	})
+	.catch(response => {
+		console.log(response)
+	})
+
+	
 
 function openItem(id) {
 	localStorage.setItem('item', id)

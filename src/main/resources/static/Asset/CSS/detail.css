@@ -34,7 +34,7 @@
 	margin-bottom: 10px;
 }
 
-.main-container .detail .form-information-detail .content span {
+span.price {
 	color: #147919;
 	font-size: 22px;
 	font-weight: bold;
@@ -42,3 +42,24 @@
 	margin-right: 10px;
 	border-bottom: #147149 1px solid;
 }
+
+#price-table {
+	width: 100%;
+	border: 1px solid black;
+	border-spacing: 0;
+}
+
+#price-table tbody tr th {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+#price-table tbody tr td {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+#price-table tbody tr td.center {
+	text-align: center!important;
+}
+

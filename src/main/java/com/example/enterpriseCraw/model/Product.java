@@ -20,4 +20,6 @@ public class Product {
     private String component;
 
     private int price;
+    private String web;
+	// Component,Name,Price,Web,_id
 }
