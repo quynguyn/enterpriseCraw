@@ -126,24 +126,28 @@ textarea {
 	font-size: 24px;
 }
 
-@media only screen and (max-width: 768px){
-	/* Add your CSS styles here */
-	.title h1{
-		font-size: 1.5rem;
-	}
-  }
+@media only screen and (max-width: 768px) {
 
-@media only screen and (max-width: 560px){
 	/* Add your CSS styles here */
-	.title h1{
+	.title h1 {
 		font-size: 1.5rem;
 	}
-	.box{
+}
+
+@media only screen and (max-width: 560px) {
+
+	/* Add your CSS styles here */
+	.title h1 {
+		font-size: 1.5rem;
+	}
+
+	.box {
 		width: 100%;
 		flex-direction: row;
 	}
-	.price{
+
+	.price {
 		border-bottom: none;
 		text-decoration: underline;
 	}
-  }
+}

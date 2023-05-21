@@ -114,10 +114,11 @@ button {
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
+
 	/* Add your CSS styles here */
-	.inputData{
+	.inputData {
 		flex-direction: column;
 		height: auto;
 	}
-  }
+}

@@ -10,14 +10,19 @@ import lombok.Data;
 @Table(name = "account")
 public class Account {
 
-    @Id
-    private String _id;
+	@Id
+	private String _id;
 
-    private String address;
-    private String businessaddress;
-    private String businessname;
+	private String address;
+	private String businessaddress;
+	private String businessname;
 
     private String name;
+
+    private String password;
+    private String profilepicture;
+    private String type;
+    private String username;
 
     public String get_id() {
         return _id;
@@ -90,11 +95,4 @@ public class Account {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    private String password;
-    private String profilepicture;
-    private String type;
-    private String username;
-
-
 }

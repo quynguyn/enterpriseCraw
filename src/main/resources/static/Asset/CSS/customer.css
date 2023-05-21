@@ -394,27 +394,32 @@ button {
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 	/* Add your CSS styles here */
-	
-  }
+
+}
+
 @media screen and (max-width: 600px) {
 	.search-bar {
 		/* width: auto; */
 		min-width: auto;
 	}
-	.title h1{
+
+	.title h1 {
 		font-size: 1.5rem;
 	}
-	.box{
+
+	.box {
 		width: 100%;
 		flex-direction: row;
 	}
-	.price{
+
+	.price {
 		border-bottom: none;
 		text-decoration: underline;
 	}
-	.container{
+
+	.container {
 		flex-direction: column;
 		width: 90%;
 		margin: 0 auto;

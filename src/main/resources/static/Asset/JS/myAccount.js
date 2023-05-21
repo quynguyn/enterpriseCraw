@@ -27,7 +27,7 @@ userTypeDiv.forEach((div) => {
 });
 
 const avatar = document.querySelector('.avatar img')
-const avatarLink = document.querySelector('.avatar #profilePicture')
+const avatarLink = document.querySelector('#profilepicture')
 const username = document.querySelector('#username')
 const password = document.querySelector('#password')
 const businessName = document.querySelector('#businessName')
@@ -41,7 +41,8 @@ fillData()
 
 function fillData() {
 	form.action = "http://localhost:8080/accounts/" + currentUser._id + "/update"
-	avatar.src = currentUser.profilePicture
+	avatar.src = currentUser.profilepicture
+	avatarLink.value = currentUser.profilepicture
 	username.value = currentUser.username
 	password.value = currentUser.password
 

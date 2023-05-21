@@ -16,6 +16,7 @@ const cartTemplate = document.getElementById("cart-template");
 const cartDetails = cartBody.querySelector(".order-detail")
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+// console.log(localStorage.getItem("currentUser"))
 
 let rangeMin = 20;
 const rangeInput = document.querySelectorAll(".range-input input");
@@ -26,19 +27,18 @@ const range = document.querySelector(".range-selected");
 // Show the loader
 function showLoader() {
 	document.getElementById("loader").style.display = "block";
-  }
-  
-  // Hide the loader
-  function hideLoader() {
+}
+
+// Hide the loader
+function hideLoader() {
 	document.getElementById("loader").style.display = "none";
-  }
-  
+}
 
 descendButton.onclick = function () {
 	showLoader()
 	itemBoxContainer.innerHTML = ''
 
-	fetch('http://localhost:8080/products/descending')
+	fetch('http://localhost:8080/products/descend')
 		.then(res => res.json())
 		.then(data => {
 			data.map(product => {
@@ -66,7 +66,7 @@ ascendButton.onclick = function () {
 	showLoader()
 	itemBoxContainer.innerHTML = ''
 
-	fetch('http://localhost:8080/products/ascending')
+	fetch('http://localhost:8080/products/ascend')
 		.then(res => res.json())
 		.then(data => {
 			data.map(product => {
@@ -93,10 +93,9 @@ ascendButton.onclick = function () {
 setCartDetails()
 
 fetch('http://localhost:8080/products')
-	.then(res =>
-		res.json()
-	)
+	.then(res => res.json())
 	.then(data => {
+		// console.log(data._embedded.products)
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
 			box.id = product._id
@@ -119,12 +118,16 @@ function setProductList() {
 	productList.value = ''
 
 	if (typeof Storage !== "undefined") {
-		var items = JSON.parse(localStorage.getItem("item"));
+		if (localStorage.getItem("item")) {
+			var items = JSON.parse(localStorage.getItem("item"));
 
-		if (items !== null) {
-			items.forEach(item => {
-				productList.value += item.id + '/'
-			})
+			console.log(localStorage.getItem("item"))
+
+			if (localStorage.getItem("item") != null) {
+				items.forEach(item => {
+					productList.value += item.id + '/'
+				})
+			}
 		}
 	} else {
 		// Sorry! No Web Storage support..
@@ -238,24 +241,20 @@ function addToCart(id) {
 	const price = cartContainer.querySelector(".price").textContent;
 	const description = cartContainer.querySelector(".description").textContent;
 
-	if (typeof Storage !== "undefined") {
+	var item = '{"id": "' + id +
+		'", "img":"' + img +
+		'", "name":"' + name +
+		'", "price": "' + price +
+		'", "description":"' + description + '"}';
+
+	if (localStorage.getItem("item")) {
 		var items = JSON.parse(localStorage.getItem("item"));
 
-		var item = '{"id": "' + id +
-			'", "img":"' + img +
-			'", "name":"' + name +
-			'", "price": "' + price +
-			'", "description":"' + description + '"}';
-
-		if (items !== null) {
-			items.push(JSON.parse(item));
-			localStorage.setItem("item", JSON.stringify(items));
-		} else {
-			var item = "[" + item + "]";
-			localStorage.setItem("item", item);
-		}
+		items.push(JSON.parse(item));
+		localStorage.setItem("item", JSON.stringify(items));
 	} else {
-		// Sorry! No Web Storage support..
+		var item = "[" + item + "]";
+		localStorage.setItem("item", item);
 	}
 
 	populateCart();
@@ -334,9 +333,9 @@ function populateCart() {
 
 	cartContainer.innerHTML = "";
 
-	var items = JSON.parse(localStorage.getItem("item"));
+	if (localStorage.getItem("item")) {
+		var items = JSON.parse(localStorage.getItem("item"));
 
-	if (items != null) {
 		var i = 0;
 		var total = 0;
 		items.forEach((item) => {
