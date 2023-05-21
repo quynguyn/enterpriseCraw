@@ -21,7 +21,7 @@
 
 .products-container #title {
     color: var(--primary-color);
-    font-size: 4rem;
+    font-size: 4px;
     font-weight: bold;
     font-family: "Courier New";
     padding: 20px 0px;
