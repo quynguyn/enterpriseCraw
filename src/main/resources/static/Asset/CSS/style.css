@@ -1,0 +1,355 @@
+:root {
+    --main-color: #272727;
+    --primary-color: #c5a364;
+    --secondary-color: #DBC9a5;
+    --third-color: #ffffff;
+    /* change the name */
+}
+
+/* Reset CSS  */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+    margin: 0px 15px;
+
+}
+
+/* 
+    to use variable in CSS 
+    Example : background-color: var(--main-color);
+*/
+
+.col-half {
+    width: calc(100%/2);
+}
+
+header {
+    top: 0;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    position: sticky;
+    height: 100px;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-part {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: inherit;
+}
+
+.nav-part a {
+    height: inherit;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px;
+    background-color: inherit;
+    color: var(--third-color);
+}
+
+#active {
+    background-color: var(--primary-color);
+}
+
+header .nav-part:last-child a {
+    margin-right: 10px;
+}
+
+.nav-part a b {
+    background-color: inherit;
+}
+
+header .search-bar {
+    height: 32px;
+    width: 30%;
+    display: flex;
+    font-size: 17px;
+    border-radius: 15px;
+    background-color: var(--third-color);
+}
+
+header .nav-part #magnifying-glass {
+    padding-right: 10px;
+    height: 75%;
+    background-color: transparent;
+}
+
+header .logo picture img {
+    display: flex;
+    height: 100px;
+    width: auto;
+    background-color: var(--main-color);
+    padding: 2px;
+}
+
+/* Style the search box inside the navigation bar */
+header input[type=text] {
+    all: unset;
+    display: flex;
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+    border-radius: 15px;
+    background-color: inherit;
+}
+
+header .nav-part #shopping-cart {
+    display: flex;
+    padding: 5px;
+    height: 50px;
+    width: auto;
+    background-color: inherit;
+    color: var(--secondary-color);
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: var(--main-color);
+    font-size: 15px;
+    padding: 0px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .nav-part {
+    height: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--third-color);
+}
+
+#contact-div {
+    width: 30%;
+    align-items: flex-start;
+}
+
+#about-div {
+    width: 20%;
+}
+
+footer .nav-part:first-child {
+    border-right: 1px solid var(--third-color);
+}
+
+footer .logo picture img {
+    display: flex;
+    height: 50px;
+    width: auto;
+    background-color: var(--main-color);
+    padding: 2px;
+}
+
+.social-media-div {
+    max-width: 350px;
+    height: inherit;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--third-color);
+    margin-right: 20px;
+}
+
+.social-media {
+    height: 50px;
+    width: 50px;
+}
+
+/* button */
+
+.btn {
+    background-color: var(--main-color);
+    /* set the background color */
+    border: none;
+    /* remove the border */
+    color: white;
+    /* set the text color */
+    padding: 15px 32px;
+    /* add some padding */
+    text-align: center;
+    /* center the text */
+    text-decoration: none;
+    /* remove underlines */
+    display: inline-block;
+    /* display as an inline-block element */
+    font-size: 16px;
+    /* set the font size */
+    margin: 4px 2px;
+    /* add some margin */
+    cursor: pointer;
+    /* add a cursor on hover */
+    margin-right: auto;
+    /* push the button to the left */
+    border-radius: 5%;
+    text-transform: capitalize;
+}
+
+.btn:hover {
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+
+.icon-container {
+    display: none;
+}
+
+.icon-container img{
+    color: var(--primary-color);
+    height: 50px;
+    width: auto;
+}
+
+@media screen and (max-width: 960px) {
+    /* body {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template:
+            'header main'
+            'footer footer';
+    } */
+
+    header {
+        top: 0;
+        /* width: fit-content; */
+        /* height: 100%; */
+        background-color: var(--main-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /* flex-direction: column; */
+        grid-area: header;
+        padding: 10px;
+    }
+
+    .main-container {
+        grid-area: main;
+    }
+
+    .nav-part {
+        height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* flex-direction: column; */
+    }
+
+    header .nav-part a {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background-color: inherit;
+        color: var(--third-color);
+    }
+
+    header .nav-part:last-child a {
+        margin-right: 10px;
+    }
+
+    header .nav-part a b {
+        display: none;
+    }
+
+    .icon-container {
+        display: block;
+    }
+
+    header .search-bar {
+        /* height: 32px;
+        width: auto;
+        display: flex;
+        font-size: 17px;
+        border-radius: 15px;
+        background-color: var(--third-color); */
+        display: none;
+    }
+
+    header .nav-part #magnifying-glass {
+        display: none;
+    }
+
+    .logo picture img {
+        display: flex;
+        height: auto;
+        width: 50px;
+        background-color: var(--main-color);
+        padding: 2px;
+    }
+
+    /* Style the search box inside the navigation bar */
+    header input[type=text] {
+        all: unset;
+        display: flex;
+        padding: 6px;
+        font-size: 17px;
+        border: none;
+        border-radius: 15px;
+        background-color: inherit;
+    }
+
+    header .nav-part #shopping-cart {
+        display: flex;
+        padding: 5px;
+        height: 50px;
+        width: auto;
+        background-color: inherit;
+        color: var(--secondary-color);
+    }
+
+    #contact-div, #about-div {
+        display: none;
+    }
+
+    footer .nav-part:first-child {
+        border-right: 1px solid var(--third-color);
+    }
+
+    footer .logo picture img {
+        display: flex;
+        height: 50px;
+        width: auto;
+        background-color: var(--main-color);
+        padding: 2px;
+    }
+
+    .social-media-div {
+        max-width: 350px;
+        height: inherit;
+        width: 25%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--third-color);
+        margin-right: 20px;
+    }
+
+    .social-media {
+        height: 50px;
+        width: 50px;
+    }
+}
