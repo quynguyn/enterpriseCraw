@@ -33,3 +33,4 @@ build/
 .vscode/
 .history
 src/main/resources/application.properties
+
