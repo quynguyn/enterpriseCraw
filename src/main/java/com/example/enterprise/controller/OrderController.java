@@ -20,12 +20,6 @@ public class OrderController {
 	@Autowired
 	OrderRepo orderRepo;
 
-	// @PostMapping("/orders")
-	// public Order createOrder(@RequestBody Order order) {
-	// System.out.println();
-	// return orderRepo.save(order);
-	// }
-
 	@PostMapping("/orders")
 	public RedirectView createOrder(@RequestParam Map<String, String> body) {
 		// work with Map

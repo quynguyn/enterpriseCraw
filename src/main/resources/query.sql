@@ -13,7 +13,6 @@ CREATE DATABASE enterprise
     IS_TEMPLATE = False;
 	
 	-- Database: enterprise
-
 -- DROP DATABASE IF EXISTS enterprise;
 
 CREATE DATABASE enterprise
@@ -25,7 +24,9 @@ CREATE DATABASE enterprise
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
-	
+
+\c enterprise;
+
 create table account(
 	_id varchar(255),
 	address varchar(255),
@@ -38,6 +39,12 @@ create table account(
 	username varchar(255)
 );
 
+COPY account (_id, address, businessAddress, businessName, name, password, profilePicture, type, username)
+	FROM 'test.csv'
+	DELIMITER ';'
+	CSV HEADER;
+
+
 
 create table products(
 	_id varchar(255),
@@ -48,6 +55,12 @@ create table products(
 	vendor varchar(255)
 );
 
+COPY products (_id, description, image, name, price, vendor)
+	FROM 'products.csv'
+	DELIMITER ','
+	CSV HEADER;
+
+
 create table orders(
 	_id varchar(255),
 	activity varchar(25500),
@@ -56,8 +69,13 @@ create table orders(
 	productList varchar(2550)
 );
 
+COPY orders (_id, activity, orderAddress, ordererName, productList)
+	FROM 'orders.csv'
+	DELIMITER ';'
+	CSV HEADER;
+
 select * from account;
 
-select * from product;
+select * from products;
 
 select * from orders;
