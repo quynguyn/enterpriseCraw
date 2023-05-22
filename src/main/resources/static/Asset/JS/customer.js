@@ -1,5 +1,7 @@
 const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
+const modal = document.querySelector("[data-modal]");
+
 
 const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
@@ -225,7 +227,6 @@ function priceSlider(minPrice, maxPrice) {
 
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
-const modal = document.querySelector("[data-modal]");
 
 function openModal(id) {
 	fillData(id);

@@ -43,7 +43,7 @@ public class OrderController {
 		orderRepo.save(order);
 
 		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl("http://127.0.0.1:5500/src/main/resources/static/customer.html");
+		redirectView.setUrl("http://localhost:8080/customer.html");
 		return redirectView;
 	}
 }
