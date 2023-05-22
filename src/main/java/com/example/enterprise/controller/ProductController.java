@@ -1,6 +1,5 @@
 package com.example.enterprise.controller;
 
-import com.example.enterprise.model.Account;
 import com.example.enterprise.model.Product;
 import com.example.enterprise.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -93,7 +93,7 @@ function logIn(event) {
 	fetch("http://localhost:8080/accounts/" + username + "/" + password)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data.type);
+			console.log(data);
 
 			if (data === undefined) {
 				displayErrorMessage();
@@ -171,20 +171,24 @@ usernameInput.addEventListener("input", (e) => {
 	const username = e.target.value
 
 	if (username != '' && onlyLettersAndNumbers(username)) {
-		fetch('http://localhost:8080/accounts/findUsername/' + username)
-			.then(res => res.json())
+		fetch('http://localhost:8080/accounts/username/' + username)
+			.then(res => {
+				res.json()
+				console.log(res)
+			})
 			.then(data => {
-				if (data.length > 0) {
-					console.log("Username already exist")
-				} else {
-					if (username.length >= 8 && username.length <= 15) {
-						console.log("Username can be used")
-					} else if (username.length < 8) {
-						console.log("Username is too short")
-					} else {
-						console.log("Username is too long")
-					}
-				}
+				console.log(data)
+			// 	if (data.length > 0) {
+			// 		console.log("Username already exist")
+			// 	} else {
+			// 		if (username.length >= 8 && username.length <= 15) {
+			// 			console.log("Username can be used")
+			// 		} else if (username.length < 8) {
+			// 			console.log("Username is too short")
+			// 		} else {
+			// 			console.log("Username is too long")
+			// 		}
+			// 	}
 			})
 	}
 });

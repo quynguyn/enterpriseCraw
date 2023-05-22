@@ -129,7 +129,7 @@
 						</div>
 						<div class="cart-button-container">
 							<!-- add to cart button -->
-							<button cart-button class="btn hover cart" onclick="addToCart()">
+							<button cart-button class="btn hover cart">
 								Add to Cart
 							</button>
 						</div>
@@ -156,7 +156,7 @@
 				</button>
 			</div>
 
-			<form class="cart-body inputData" method="POST" action="http://localhost:3000/orders">
+			<form class="cart-body inputData" method="POST" action="http://localhost:8080/orders">
 				<div class="order-detail hide">
 					<div>
 						<label for="productList"></label>
@@ -173,10 +173,6 @@
 					<div>
 						<label for="activity"></label>
 						<input type="text" id="activity" name="activity" />
-					</div>
-					<div>
-						<label for="hubName"></label>
-						<input type="text" id="hubName" name="hubName" />
 					</div>
 				</div>
 				<div class="items-list"></div>

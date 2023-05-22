@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.lang.ProcessBuilder.Redirect;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping
@@ -17,24 +19,31 @@ public class OrderController {
 
 	@Autowired
 	OrderRepo orderRepo;
-//
-//	@PostMapping("/product")
-//	public Order updateAccount(@PathVariable String id, @RequestBody Order updatedProduct) {
-//		Optional<Order> orderOptional = orderRepo.findById(id);
-//		if (orderOptional.isPresent()) {
-//			Order existingProduct = orderOptional.get();
-//			System.out.println(existingProduct);
-//			// existingProduct.setName(updatedProduct.getName());
-//			// existingProduct.setPrice(updatedProduct.getPrice());
-//			// existingProduct.setImage(updatedProduct.getImage());
-//			// existingProduct.setDescription(updatedProduct.getDescription());
-//
-//			// Save the updated account in the repository
-//
-//			System.out.println(existingProduct);
-//			return orderRepo.save(existingProduct);
-//		}
-//		return null; // Return null or handle the case where the account with the given ID doesn't
-//						// exist
-//	}
+
+	// @PostMapping("/orders")
+	// public Order createOrder(@RequestBody Order order) {
+	// System.out.println();
+	// return orderRepo.save(order);
+	// }
+
+	@PostMapping("/orders")
+	public RedirectView createOrder(@RequestParam Map<String, String> body) {
+		// work with Map
+		System.out.println(body);
+		Order order = new Order();
+		
+		order.set_id(UUID.randomUUID().toString());
+
+		order.setActivity(body.get("activity"));
+		order.setOrderAddress(body.get("orderAddress"));
+		order.setOrdererName(body.get("orderName"));
+		order.setProductList(body.get("productList"));
+
+
+		orderRepo.save(order);
+
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("http://127.0.0.1:5500/src/main/resources/static/customer.html");
+		return redirectView;
+	}
 }

@@ -90,8 +90,6 @@ ascendButton.onclick = function () {
 		})
 }
 
-setCartDetails()
-
 fetch('http://localhost:8080/products')
 	.then(res => res.json())
 	.then(data => {
@@ -112,6 +110,9 @@ fetch('http://localhost:8080/products')
 			itemBoxContainer.append(box)
 		})
 	})
+	.catch(err => {
+		console.error(err)
+	})
 
 function setProductList() {
 	const productList = cartDetails.querySelector('#productList')
@@ -121,10 +122,13 @@ function setProductList() {
 		if (localStorage.getItem("item")) {
 			var items = JSON.parse(localStorage.getItem("item"));
 
+			// console.log('1')
 			console.log(localStorage.getItem("item"))
+			// console.log('2')
 
 			if (localStorage.getItem("item") != null) {
 				items.forEach(item => {
+					console.log(item)
 					productList.value += item.id + '/'
 				})
 			}
@@ -134,19 +138,18 @@ function setProductList() {
 	}
 }
 
+setCartDetails()
+
 function setCartDetails() {
 	const ordererName = cartDetails.querySelector('#ordererName')
 	const ordererAddress = cartDetails.querySelector('#ordererAddress')
 	const activity = cartDetails.querySelector('#activity')
-	const hubName = cartDetails.querySelector('#hubName')
 
 	setProductList()
 
 	ordererName.value = currentUser.name
 	ordererAddress.value = currentUser.address
 	activity.value = 'active'
-	hubList = ['New York Distribution Hub', 'Los Angeles Distribution Hub', 'Chicago Distribution Hub']
-	hubName.value = hubList[getRandomInteger(0, 3)]
 }
 
 function getRandomInteger(min, max) {
@@ -236,6 +239,8 @@ function closeModal() {
 function addToCart(id) {
 	const cartContainer = document.querySelector(".detail-body");
 
+	console.log(cartContainer)
+
 	const img = cartContainer.querySelector(".product-image").src;
 	const name = cartContainer.querySelector(".product-name").textContent;
 	const price = cartContainer.querySelector(".price").textContent;
@@ -273,6 +278,12 @@ function fillData(id) {
 	const productName = templateClone.querySelector(".product-name");
 	const productPrice = templateClone.querySelector(".price");
 	const productDescription = templateClone.querySelector(".description");
+
+	const button = templateClone.querySelector('.cart-button-container button')
+
+	button.onclick = () => {
+		addToCart(id)
+	}
 
 	fetch('http://localhost:8080/products/' + id)
 		.then(res => res.json())
@@ -315,10 +326,12 @@ function checkOutCart() {
 	cartBody.submit()
 	var items = JSON.parse(localStorage.getItem("item"));
 	console.log(items);
+	// productList
 
 	if (items == null) {
 		alert("Cart is empty.");
 	} else {
+		setCartDetails()
 		localStorage.removeItem("item");
 		alert("Check out successful.");
 	}

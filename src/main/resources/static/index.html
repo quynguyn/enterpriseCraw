@@ -75,8 +75,8 @@
 								Customer</label>
 						</div>
 					</div>
-					<form action="http://localhost:3000/accounts" method="POST" class="inputData"
-						enctype="multipart/form-data" id="register-form">
+					<form action="http://localhost:8080/accounts/create" method="POST" class="inputData"
+						 id="register-form">
 						<!-- Common input -->
 						<div class="commonInformation">
 							<div>
@@ -112,8 +112,8 @@
 								</div>
 							</div>
 							<div>
-								<label for="profilePicture">Profile Picture:</label>
-								<input required type="file" id="image" name="image" accept="image/*" />
+								<label for="profilepicture">Profile Picture:</label>
+								<input required type="text" id="profilepicture" name="profilepicture"/>
 							</div>
 						</div>
 						<!-- Vendor account -->
